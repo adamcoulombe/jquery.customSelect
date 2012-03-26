@@ -1,0 +1,5 @@
+Custom Select Box CSS Style Plugin: jQuery + CSS
+
+This lightweight, unintrusive technique uses the native select box functionality of the web browser, and overlays a stylable <span> element in order to acheive your desired look. Since it makes use of default browser functionality, it can be treated just like any ordinary HTML select box.
+
+
