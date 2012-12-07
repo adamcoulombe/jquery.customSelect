@@ -15,9 +15,9 @@ $('select.styled').customSelect();
 
 <style type="text/css">
 body { font-family:Arial, Helvetica, sans-serif }
-span.customStyleSelectBox { font-size:11px; background-color: #f5f0de; color:#7c7c7c; padding:5px 7px; border:1px solid #e7dab0; -moz-border-radius: 5px; -webkit-border-radius: 5px;border-radius: 5px 5px; }
-span.customStyleSelectBox.changed { background-color: #f0dea4; }
-.customStyleSelectBoxInner { background:url(canvas-list-nav-item-arrow.gif) no-repeat center right; }
+span.customSelect { font-size:11px; background-color: #f5f0de; color:#7c7c7c; padding:5px 7px; border:1px solid #e7dab0; -moz-border-radius: 5px; -webkit-border-radius: 5px;border-radius: 5px 5px; }
+span.customSelect.changed { background-color: #f0dea4; }
+.customSelectInner { background:url(canvas-list-nav-item-arrow.gif) no-repeat center right; }
 </style>
 </head>
 
@@ -56,14 +56,21 @@ span.customStyleSelectBox.changed { background-color: #f0dea4; }
 	$('.mySelectBoxClass').customSelect();
 });</pre></td><td valign="top">&nbsp;</td>
     <td valign="top"><strong>CSS:</strong>
-    <pre>.customStyleSelectBox {
+    <pre>.customSelect {
 /* Styles For Your Select Box */
 }
-<br />.customStyleSelectBox.changed {
+<br />.customSelect.changed {
 /* You can use this if you want a different style after user has made a selection */
 }
-<br />/* on the next line we add a down arrow on the right to indicate that it is a select box */
-.customStyleSelectBoxInner {
+
+.customSelect.customSelectFocus {
+/* You can use this if you want a different style after user has made a selection */
+}
+.customSelect.customSelectOpen {
+/* You can use this if you want a different style after user has made a selection */
+}
+<br />/* We can style the inner box too */
+.customSelectInner {
 background:url(canvas-list-nav-item-arrow-.gif) no-repeat center right;
 }</pre></td>
   </tr>

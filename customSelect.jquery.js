@@ -6,19 +6,23 @@
 	  return this.each(function() {
 	  
 			var currentSelected = $(this).find(':selected');
-			var html = currentSelected.html();
-			if(!html){ html='&nbsp;'; }
-			$(this).after('<span class="customStyleSelectBox"><span class="customStyleSelectBoxInner">'+html+'</span></span>').css({position:'absolute', opacity:0,fontSize:$(this).next().css('font-size')});
-			var selectBoxSpan = $(this).next();
-			var selectBoxWidth = parseInt($(this).width()) - parseInt(selectBoxSpan.css('padding-left')) -parseInt(selectBoxSpan.css('padding-right'));			
-			var selectBoxSpanInner = selectBoxSpan.find(':first-child');
-			selectBoxSpan.css({display:'inline-block'});
-			selectBoxSpanInner.css({width:selectBoxWidth, display:'inline-block'});
-			var selectBoxHeight = parseInt(selectBoxSpan.height()) + parseInt(selectBoxSpan.css('padding-top')) + parseInt(selectBoxSpan.css('padding-bottom'));
-			$(this).height(selectBoxHeight).change(function(){
-				// selectBoxSpanInner.text($(this).val()).parent().addClass('changed');   This was not ideal
-			selectBoxSpanInner.text($(this).find(':selected').text()).parent().addClass('changed');
-				// Thanks to Juarez Filho & PaddyMurphy
+			var html = currentSelected.html() || '&nbsp;';
+			var customSelectInnerSpan = $('<span class="customSelectInner" />').append(html);
+			var customSelectSpan = $('<span class="customSelect" />').append(customSelectInnerSpan);
+			$(this).after(customSelectSpan);
+			var selectBoxWidth = parseInt($(this).outerWidth()) - (parseInt(customSelectSpan.outerWidth()) - parseInt(customSelectSpan.width()) );			
+			customSelectSpan.css({display:'inline-block'});
+			customSelectInnerSpan.css({width:selectBoxWidth, display:'inline-block'});
+			var selectBoxHeight = customSelectSpan.outerHeight();
+			$(this).css({width:customSelectSpan.outerWidth(),position:'absolute', opacity:0,height:selectBoxHeight,fontSize:$(this).next().css('font-size')}).change(function(){
+				customSelectInnerSpan.text($(this).find(':selected').text()).parent().addClass('customSelectChanged');
+				setTimeout(function(){customSelectSpan.removeClass('customSelectOpen');},60);
+			}).bind('mousedown',function(){
+				customSelectSpan.toggleClass('customSelectOpen');
+			}).focus(function(){
+				customSelectSpan.addClass('customSelectFocus');
+			}).blur(function(){
+				customSelectSpan.removeClass('customSelectFocus customSelectOpen');
 			});
 			
 	  });
