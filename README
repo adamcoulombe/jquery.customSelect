@@ -6,6 +6,7 @@ CHANGES IN 0.2.0
  * Streamlined creation/selection of span elements
  * Renamed span classes to "customSelect" and "customSelectInner" to coinside with plugin name
  * You can now have styles for when select box is open or focused via the classes .customSelectOpen and .customSelectFocus
+ * ability to set a custom class by passing in {customClass:'myClassName'}
 
 Copyright 2021 Adam Coulombe
 

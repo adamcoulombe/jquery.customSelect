@@ -3,12 +3,16 @@
  
  	customSelect : function(options) {
 	  if(!$.browser.msie || ($.browser.msie&&$.browser.version>6)){
+	  var defaults = { customClass: null };
+	  var options = $.extend(defaults, options);
+	  
 	  return this.each(function() {
 	  
 			var currentSelected = $(this).find(':selected');
 			var html = currentSelected.html() || '&nbsp;';
 			var customSelectInnerSpan = $('<span class="customSelectInner" />').append(html);
 			var customSelectSpan = $('<span class="customSelect" />').append(customSelectInnerSpan);
+			if(options.customClass){customSelectSpan.addClass(options.customClass);}
 			$(this).after(customSelectSpan);
 			var selectBoxWidth = parseInt($(this).outerWidth()) - (parseInt(customSelectSpan.outerWidth()) - parseInt(customSelectSpan.width()) );			
 			customSelectSpan.css({display:'inline-block'});
