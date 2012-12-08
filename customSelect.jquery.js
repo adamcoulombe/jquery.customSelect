@@ -18,7 +18,7 @@
 			customSelectSpan.css({display:'inline-block'});
 			customSelectInnerSpan.css({width:selectBoxWidth, display:'inline-block'});
 			var selectBoxHeight = customSelectSpan.outerHeight();
-			$(this).css({width:customSelectSpan.outerWidth(),position:'absolute', opacity:0,height:selectBoxHeight,fontSize:$(this).next().css('font-size')}).change(function(){
+			$(this).css({'-webkit-appearance':'menulist-button',width:customSelectSpan.outerWidth(),position:'absolute', opacity:0,height:selectBoxHeight,fontSize:$(this).next().css('font-size')}).change(function(){
 				customSelectInnerSpan.text($(this).find(':selected').text()).parent().addClass('customSelectChanged');
 				setTimeout(function(){customSelectSpan.removeClass('customSelectOpen');},60);
 			}).bind('mousedown',function(){
