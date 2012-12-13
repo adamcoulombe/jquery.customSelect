@@ -14,6 +14,10 @@
 			var customSelectSpan = $('<span class="customSelect" />').append(customSelectInnerSpan);
 			if(options.customClass){customSelectSpan.addClass(options.customClass);}
 			$(this).after(customSelectSpan);
+			
+			customSelectSpan.addClass($(this).attr('class'));
+			customSelectSpan.attr('style', $(this).attr('style'));
+			
 			var selectBoxWidth = parseInt($(this).outerWidth()) - (parseInt(customSelectSpan.outerWidth()) - parseInt(customSelectSpan.width()) );			
 			customSelectSpan.css({display:'inline-block'});
 			customSelectInnerSpan.css({width:selectBoxWidth, display:'inline-block'});
