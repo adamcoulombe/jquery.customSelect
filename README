@@ -1,5 +1,9 @@
 Custom Select Box CSS Style Plugin: jQuery + CSS
 
+Version 0.2.1 (17/12/2012)
+ * Select box listens for 'update' event which can be triggered to update the size and content if needed
+ * Removed dependency on $.browser
+
 Version 0.2.0
 
 CHANGES IN 0.2.0
