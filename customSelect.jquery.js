@@ -2,7 +2,7 @@
  $.fn.extend({
  
  	customSelect : function(options) {
-	  if(!$.browser.msie || ($.browser.msie&&$.browser.version>6)){
+	  if(typeof document.body.style.maxHeight != "undefined"){ /* filter out <= IE6 */
 	  var defaults = {
 		  customClass: null,
 		  mapClass:true,
@@ -12,9 +12,7 @@
 	  
 	  return this.each(function() {
 	  		var $this = $(this);
-			var currentSelected = $this.find(':selected');
-			var html = currentSelected.html() || '&nbsp;';
-			var customSelectInnerSpan = $('<span class="customSelectInner" />').append(html);
+			var customSelectInnerSpan = $('<span class="customSelectInner" />');
 			var customSelectSpan = $('<span class="customSelect" />').append(customSelectInnerSpan);
 			$this.after(customSelectSpan);
 			
@@ -22,12 +20,17 @@
 			if(options.mapClass)	{ customSelectSpan.addClass($this.attr('class')); }
 			if(options.mapStyle)	{ customSelectSpan.attr('style', $this.attr('style')); }
 			
-			var selectBoxWidth = parseInt($this.outerWidth()) - (parseInt(customSelectSpan.outerWidth()) - parseInt(customSelectSpan.width()) );			
-			customSelectSpan.css({display:'inline-block'});
-			customSelectInnerSpan.css({width:selectBoxWidth, display:'inline-block'});
-			var selectBoxHeight = customSelectSpan.outerHeight();
-			$this.css({'-webkit-appearance':'menulist-button',width:customSelectSpan.outerWidth(),position:'absolute', opacity:0,height:selectBoxHeight,fontSize:$this.next().css('font-size')}).change(function(){
-				customSelectInnerSpan.text($this.find(':selected').text()).parent().addClass('customSelectChanged');
+			$this.bind('update',function(){
+				$this.change();
+				var selectBoxWidth = parseInt($this.outerWidth()) - (parseInt(customSelectSpan.outerWidth()) - parseInt(customSelectSpan.width()) );			
+				customSelectSpan.css({display:'inline-block'});
+				customSelectInnerSpan.css({width:selectBoxWidth, display:'inline-block'});
+				var selectBoxHeight = customSelectSpan.outerHeight();
+				$this.css({'-webkit-appearance':'menulist-button',width:customSelectSpan.outerWidth(),position:'absolute', opacity:0,height:selectBoxHeight,fontSize:customSelectSpan.css('font-size')});
+			}).change(function(){
+				var currentSelected = $this.find(':selected');
+				var html = currentSelected.html() || '&nbsp;';
+				customSelectInnerSpan.html(html).parent().addClass('customSelectChanged');
 				setTimeout(function(){customSelectSpan.removeClass('customSelectOpen');},60);
 			}).bind('mousedown',function(){
 				customSelectSpan.toggleClass('customSelectOpen');
@@ -35,7 +38,7 @@
 				customSelectSpan.addClass('customSelectFocus');
 			}).blur(function(){
 				customSelectSpan.removeClass('customSelectFocus customSelectOpen');
-			});
+			}).trigger('update');
 			
 	  });
 	  }
