@@ -30,7 +30,7 @@
 						customSelectInnerSpan.css({width:selectBoxWidth, display:'inline-block'});
 						var selectBoxHeight = customSelectSpan.outerHeight();
 						$this.css({'-webkit-appearance':'menulist-button',width:customSelectSpan.outerWidth(),position:'absolute', opacity:0,height:selectBoxHeight,fontSize:customSelectSpan.css('font-size')});
-					}).change(function(){
+					}).bind("change keyup",function(){
 						var currentSelected = $this.find(':selected');
 						var html = currentSelected.html() || '&nbsp;';
 						customSelectInnerSpan.html(html).parent().addClass('customSelectChanged');
