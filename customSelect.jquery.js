@@ -23,19 +23,14 @@
 					if(options.mapClass)	{ customSelectSpan.addClass($this.attr('class')); }
 					if(options.mapStyle)	{ customSelectSpan.attr('style', $this.attr('style')); }
 					
-					$this.bind('update',function(){
-						$this.change();
+					$this.on('update',function(){
+						changed(this);
 						var selectBoxWidth = parseInt($this.outerWidth(), 10) - (parseInt(customSelectSpan.outerWidth(), 10) - parseInt(customSelectSpan.width(), 10) );
 						customSelectSpan.css({display:'inline-block'});
 						customSelectInnerSpan.css({width:selectBoxWidth, display:'inline-block'});
 						var selectBoxHeight = customSelectSpan.outerHeight();
 						$this.css({'-webkit-appearance':'menulist-button',width:customSelectSpan.outerWidth(),position:'absolute', opacity:0,height:selectBoxHeight,fontSize:customSelectSpan.css('font-size')});
-					}).bind("change keyup",function(){
-						var currentSelected = $this.find(':selected');
-						var html = currentSelected.html() || '&nbsp;';
-						customSelectInnerSpan.html(html).parent().addClass('customSelectChanged');
-						setTimeout(function(){customSelectSpan.removeClass('customSelectOpen');},60);
-					}).bind('mousedown',function(){
+					}).on("change keyup",changed).on('mousedown',function(){
 						customSelectSpan.toggleClass('customSelectOpen');
 					}).focus(function(){
 						customSelectSpan.addClass('customSelectFocus');
@@ -44,6 +39,16 @@
 					}).trigger('update');
 					
 				});
+
+				function changed(e){
+					var $this = $( (e.currentTarget || e) ) ;
+					var currentSelected = $this.find(':selected');
+					var customSelectSpan = $this.next();
+					var customSelectSpanInner = customSelectSpan.children(':first');
+					var html = currentSelected.html() || '&nbsp;';
+					customSelectSpanInner.html(html).parent().addClass('customSelectChanged');
+					setTimeout(function(){customSelectSpan.removeClass('customSelectOpen');},60);
+				}
 			}
 		}
 	});
