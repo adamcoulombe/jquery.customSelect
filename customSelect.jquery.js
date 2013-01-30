@@ -1,4 +1,4 @@
-/*! jQuery.customSelect() - v0.2.2 - 2013-01-23 */
+/*! jQuery.customSelect() - v0.2.3 - 2013-01-30 */
 
 (function($){
 	$.fn.extend({
