@@ -1,7 +1,7 @@
 Custom Select Box CSS Style Plugin: jQuery + CSS
 
 
-Version 0.2.3 (30/12/2012)
+Version 0.2.3 (30/01/2013)
  * Fixes change event not firing for Firefox keyboard users
  * customSelect no longer triggers the change event on initiation
 
