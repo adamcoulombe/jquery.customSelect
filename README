@@ -1,5 +1,7 @@
 Custom Select Box CSS Style Plugin: jQuery + CSS
 
+Version 0.2.4 (03/02/2013)
+ * Supports hover via .customSelectHover class on customSelect span
 
 Version 0.2.3 (30/01/2013)
  * Fixes change event not firing for Firefox keyboard users
