@@ -1,4 +1,4 @@
-/*! jQuery.customSelect() - v0.2.3 - 2013-01-30 */
+/*! jQuery.customSelect() - v0.2.4 - 2013-02-03 */
 
 (function($){
 	$.fn.extend({
@@ -38,6 +38,10 @@
 						customSelectSpan.addClass('customSelectFocus');
 					}).blur(function(){
 						customSelectSpan.removeClass('customSelectFocus customSelectOpen');
+					}).hover(function(){
+						customSelectSpan.addClass('customSelectHover');
+					},function(){
+						customSelectSpan.removeClass('customSelectHover');
 					}).trigger('update');
 				});
 
