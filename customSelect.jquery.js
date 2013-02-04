@@ -1,4 +1,4 @@
-/*! jQuery.customSelect() - v0.2.4 - 2013-02-03 */
+/*! jQuery.customSelect() - v0.2.5 - 2013-02-04 */
 
 (function($){
 	$.fn.extend({
@@ -30,12 +30,15 @@
 						customSelectInnerSpan.css({width:selectBoxWidth, display:'inline-block'});
 						var selectBoxHeight = customSelectSpan.outerHeight();
 						$this.css({'-webkit-appearance':'menulist-button',width:customSelectSpan.outerWidth(),position:'absolute', opacity:0,height:selectBoxHeight,fontSize:customSelectSpan.css('font-size')});
-					}).on("change",changed).on('keyup',function(){
+					}).on("change",function(){
+						customSelectSpan.addClass('customSelectChanged');
+						changed(this);
+					}).on('keyup',function(){
 						$this.blur(); $this.focus(); 
 					}).on('mousedown',function(){
-						customSelectSpan.toggleClass('customSelectOpen');
+						customSelectSpan.removeClass('customSelectChanged').toggleClass('customSelectOpen');
 					}).focus(function(){
-						customSelectSpan.addClass('customSelectFocus');
+						customSelectSpan.removeClass('customSelectChanged').addClass('customSelectFocus');
 					}).blur(function(){
 						customSelectSpan.removeClass('customSelectFocus customSelectOpen');
 					}).hover(function(){
@@ -49,12 +52,12 @@
 		}
 	});
 	function changed(e){
-		var $this = $( (e.currentTarget || e) ) ;
+		var $this = $(e) ;
 		var currentSelected = $this.find(':selected');
 		var customSelectSpan = $this.next();
 		var customSelectSpanInner = customSelectSpan.children(':first');
 		var html = currentSelected.html() || '&nbsp;';
-		customSelectSpanInner.html(html).parent().addClass('customSelectChanged');
+		customSelectSpanInner.html(html);
 		setTimeout(function(){customSelectSpan.removeClass('customSelectOpen');},60);
 	}
 })(jQuery);

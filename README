@@ -1,5 +1,10 @@
 Custom Select Box CSS Style Plugin: jQuery + CSS
 
+Version 0.2.5 (04/02/2013)
+ * Updates/fixes to .customSelectChanged class usage
+ * customSelectChanged class is added to span when select value changes
+ * customSelectChanged class is removed on mousedown or on blur
+
 Version 0.2.4 (03/02/2013)
  * Supports hover via .customSelectHover class on customSelect span
 
