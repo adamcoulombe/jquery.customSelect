@@ -36,7 +36,7 @@
 					}).on('keyup',function(){
 						$this.blur(); $this.focus(); 
 					}).on('mousedown',function(){
-						customSelectSpan.removeClass('customSelectChanged').toggleClass('customSelectOpen');
+						customSelectSpan.removeClass('customSelectChanged').addClass('customSelectOpen');
 					}).focus(function(){
 						customSelectSpan.removeClass('customSelectChanged').addClass('customSelectFocus');
 					}).blur(function(){
