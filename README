@@ -1,5 +1,10 @@
 Custom Select Box CSS Style Plugin: jQuery + CSS
 
+Version 0.3.0 (2013-02-011)
+ * Refactored coding style
+ * Moved method 'changed' to local scope
+ * Added extra span to allow for more flexible styling
+
 Version 0.2.5 (04/02/2013)
  * Updates/fixes to .customSelectChanged class usage
  * customSelectChanged class is added to span when select value changes
@@ -24,7 +29,8 @@ CHANGES IN 0.2.0
  * You can now have styles for when select box is open or focused via the classes .customSelectOpen and .customSelectFocus
  * ability to set a custom class by passing in {customClass:'myClassName'}
 
-Copyright 2021 Adam Coulombe
+Original by
+Copyright 2012 Adam Coulombe
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

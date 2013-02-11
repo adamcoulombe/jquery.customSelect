@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Style Select Boxes Using jQuery + CSS</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="customSelect.jquery.js"></script>
@@ -44,7 +44,8 @@ span.customSelect.changed { background-color: #f0dea4; }
 
 <h3>Notes:</h3> <p>This technique will not work for browsers IE6 and older, but rather safely and cleanly degrades to default styling for those select boxes.</p>
 <h3>Download from github:</h3>
-<p><a href="https://github.com/adamcoulombe/jquery.customSelect/raw/master/customSelect.jquery.js">Click Here to Download the jQuery Plugin </a></p>
+<p><a href="https://github.com/bmatzner/jquery.customSelect/raw/master/customSelect.jquery.min.js">Click here to download the production-ready, minified jQuery Plugin </a></p>
+<p><a href="https://github.com/bmatzner/jquery.customSelect/raw/master/customSelect.jquery.js">Click here to download the uncompressed jQuery Plugin </a></p>
 
 <h3>Usage:</h3>
 
@@ -56,27 +57,46 @@ span.customSelect.changed { background-color: #f0dea4; }
 	$('.mySelectBoxClass').customSelect();
 });</pre></td><td valign="top">&nbsp;</td>
     <td valign="top"><strong>CSS:</strong>
-    <pre>.customSelect {
+    <pre>
+.customSelect {
 /* Styles For Your Select Box */
+position: relative;
 }
-<br />.customSelect.changed {
+<br />
+.customSelect.changed {
 /* You can use this if you want a different style after user has made a selection */
 }
 
-.customSelect.customSelectFocus {
+.customSelectFocus {
 /* You can use this if you want a different style after user has made a selection */
 }
-.customSelect.customSelectOpen {
+
+.customSelectOpen {
 /* You can use this if you want a different style after user has made a selection */
 }
-<br />/* We can style the inner box too */
+<br />
+/* We can style the inner box, too */
 .customSelectInner {
 background:url(canvas-list-nav-item-arrow.gif) no-repeat center right;
-}</pre></td>
+}
+
+/* An (empty) extra span is attached to allow for individual styling */
+.customSelectExtra {
+	position: absolute;
+	right: 8px;
+	top: 50%;
+	margin-top: -4px;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 8px 4px 0 4px;
+	border-color: red;
+}
+</pre></td>
   </tr>
 </table>
 <h3>Fork on github:</h3>
-<p> <a href="https://github.com/adamcoulombe/jquery.customSelect">jquery.customSelect on github</a></p>
+<p> <a href="https://github.com/bmatzner/jquery.customSelect">jquery.customSelect on github</a></p>
 
 </body>
 </html>
