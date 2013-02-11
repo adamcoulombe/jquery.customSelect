@@ -32,7 +32,7 @@
                     }, 60);
                 };
 
-            if (typeof document.body.style.maxHeight !== "undefined") {
+            if (typeof document.body.style.maxHeight === 'undefined') {
                 /* filter out <= IE6 */
                 return this;
             }
