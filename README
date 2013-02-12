@@ -2,7 +2,11 @@ Custom Select Box CSS Style Plugin: jQuery + CSS
 
 Version 0.3.0 (12/02/2013)
  * Refactored coding style
+ * Changed filenames to standard jQuery plugin naming conventions
+ * Fixed IE6 Filtering
+ * Added component.json for bower
  * Moved method 'changed' to local scope
+ * Update to Dual GPL/MIT license
 
 Version 0.2.5 (04/02/2013)
  * Updates/fixes to .customSelectChanged class usage
