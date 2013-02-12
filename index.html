@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Style Select Boxes Using jQuery + CSS</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript" src="customSelect.jquery.js"></script>
+<script type="text/javascript" src="jquery.customSelect.js"></script>
 <script type="text/javascript">
 $(function(){
 
@@ -12,12 +12,26 @@ $('select.styled').customSelect();
 
 });
 </script>
-
 <style type="text/css">
-body { font-family:Arial, Helvetica, sans-serif }
-span.customSelect { font-size:11px; background-color: #f5f0de; color:#7c7c7c; padding:5px 7px; border:1px solid #e7dab0; -moz-border-radius: 5px; -webkit-border-radius: 5px;border-radius: 5px 5px; }
-span.customSelect.changed { background-color: #f0dea4; }
-.customSelectInner { background:url(canvas-list-nav-item-arrow.gif) no-repeat center right; }
+body {
+	font-family:Arial, Helvetica, sans-serif
+}
+span.customSelect {
+	font-size:11px;
+	background-color: #f5f0de;
+	color:#7c7c7c;
+	padding:5px 7px;
+	border:1px solid #e7dab0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px 5px;
+}
+span.customSelect.changed {
+	background-color: #f0dea4;
+}
+.customSelectInner {
+	background:url(customSelect-arrow.gif) no-repeat center right;
+}
 </style>
 </head>
 
@@ -27,37 +41,35 @@ span.customSelect.changed { background-color: #f0dea4; }
 <h2>Demo:</h2>
 <label>Unstyled:</label>
 <select>
-<option>one</option>
-<option>two</option>
-<option>something</option>
-<option>4</option>
-<option>5</option>
+  <option>one</option>
+  <option>two</option>
+  <option>something</option>
+  <option>4</option>
+  <option>5</option>
 </select>
 <label>Styled:</label>
 <select class="styled">
-<option>one</option>
-<option>two</option>
-<option>something</option>
-<option>4</option>
-<option>5</option>
+  <option>one</option>
+  <option>two</option>
+  <option>something</option>
+  <option>4</option>
+  <option>5</option>
 </select>
-
-<h3>Notes:</h3> <p>This technique will not work for browsers IE6 and older, but rather safely and cleanly degrades to default styling for those select boxes.</p>
+<h3>Notes:</h3>
+<p>This technique will not work for browsers IE6 and older, but rather safely and cleanly degrades to default styling for those select boxes.</p>
 <h3>Download from github:</h3>
-<p><a href="https://github.com/bmatzner/jquery.customSelect/raw/master/customSelect.jquery.min.js">Click here to download the production-ready, minified jQuery Plugin </a></p>
-<p><a href="https://github.com/bmatzner/jquery.customSelect/raw/master/customSelect.jquery.js">Click here to download the uncompressed jQuery Plugin </a></p>
-
+<p><a href="https://github.com/adamcoulombe/jquery.customSelect/raw/master/jquery.customSelect.min.js">Click here to download the production-ready, minified jQuery Plugin </a></p>
+<p><a href="https://github.com/adamcoulombe/jquery.customSelect/raw/master/jquery.customSelect.js">Click here to download the uncompressed jQuery Plugin </a></p>
 <h3>Usage:</h3>
-
 <table border="0" cellspacing="15" cellpadding="0">
   <tr>
-    <td valign="top"><strong>Javascript:
-    </strong>
-    <pre>$(document).ready(function(){
+    <td valign="top"><strong>Javascript: </strong>
+      <pre>$(document).ready(function(){
 	$('.mySelectBoxClass').customSelect();
-});</pre></td><td valign="top">&nbsp;</td>
+});</pre></td>
+    <td valign="top">&nbsp;</td>
     <td valign="top"><strong>CSS:</strong>
-    <pre>
+      <pre>
 .customSelect {
 /* Styles For Your Select Box */
 position: relative;
@@ -79,24 +91,10 @@ position: relative;
 .customSelectInner {
 background:url(canvas-list-nav-item-arrow.gif) no-repeat center right;
 }
-
-/* An (empty) extra span is attached to allow for individual styling */
-.customSelectExtra {
-	position: absolute;
-	right: 8px;
-	top: 50%;
-	margin-top: -4px;
-	width: 0px;
-	height: 0px;
-	border-style: solid;
-	border-width: 8px 4px 0 4px;
-	border-color: red;
-}
 </pre></td>
   </tr>
 </table>
 <h3>Fork on github:</h3>
-<p> <a href="https://github.com/bmatzner/jquery.customSelect">jquery.customSelect on github</a></p>
-
+<p> <a href="https://github.com/adamcoulombe/jquery.customSelect">jquery.customSelect on github</a></p>
 </body>
 </html>

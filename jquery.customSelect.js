@@ -1,11 +1,11 @@
 /*!
- * jQuery.customSelect() - v0.3.0
- * https://github.com/bmatzner/jquery.customSelect
- * 2013-02-11
- *
- * Original Copyright 2021 Adam Coulombe
+ * jquery.customSelect() - v0.3.0
  * http://adam.co/lab/jquery/customselect/
- * @license http://www.apache.org/licenses/LICENSE-2.0
+ * 2013-02-12
+ *
+ * Copyright 2013 Adam Coulombe
+ * @license http://www.opensource.org/licenses/mit-license.html MIT License
+ * @license http://www.gnu.org/licenses/gpl.html GPL2 License 
  */
 
 (function ($) {
@@ -42,10 +42,9 @@
             return this.each(function () {
                 var $select = $(this),
                     customSelectInnerSpan = $('<span class="customSelectInner" />'),
-                    customSelectExtraSpan = $('<span class="customSelectExtra" />'),
                     customSelectSpan = $('<span class="customSelect" />');
 
-                customSelectSpan.append(customSelectInnerSpan, customSelectExtraSpan);
+                customSelectSpan.append(customSelectInnerSpan);
                 $select.after(customSelectSpan);
 
                 if (options.customClass) {

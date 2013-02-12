@@ -1,19 +1,12 @@
 {
-    "name":         "jquery-customselect",
-    "title":        "jQuery.customSelect",
+    "name":         "jquery.customSelect",
     "version":      "0.3.0",
-    "main":         "./customSelect.customselect.js",
+    "main":         ["./jquery.customSelect.js", "./jquery.customSelect.min.js"],
     "dependencies": {
         "jquery": ">=1.7.2"
     },
     "repository":   {
         "type": "git",
-        "url":  "git@github.com:bmatzner/jquery.customSelect.git"
-    },
-    "licenses":     [
-        {
-            "type": "Apache 2.0",
-            "url":  "http://www.apache.org/licenses/LICENSE-2.0"
-        }
-    ]
+        "url":  "git@github.com:adamcoulombe/jquery.customSelect.git"
+    }
 }
