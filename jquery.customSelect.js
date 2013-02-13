@@ -67,6 +67,12 @@
 
                         changed(this);
 
+                        if ($select.attr('disabled')) {
+							customSelectSpan.addClass('disabled');
+						} else {
+							customSelectSpan.removeClass('disabled');
+						}
+
                         customSelectSpan.css({
                             display: 'inline-block'
                         });
