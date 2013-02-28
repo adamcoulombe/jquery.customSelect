@@ -1,5 +1,9 @@
 Custom Select Box CSS Style Plugin: jQuery + CSS
 
+Version 0.3.2 (28/02/2013)
+ * Patch for incorrect select height caused by 0.3.0
+ * Support for `disabled` select boxes via customSelectDisabled class
+ 
 Version 0.3.0 (12/02/2013)
  * Refactored coding style
  * Changed filenames to standard jQuery plugin naming conventions

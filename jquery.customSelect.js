@@ -1,7 +1,7 @@
 /*!
- * jquery.customSelect() - v0.3.0
+ * jquery.customSelect() - v0.3.2
  * http://adam.co/lab/jquery/customselect/
- * 2013-02-12
+ * 2013-02-28
  *
  * Copyright 2013 Adam Coulombe
  * @license http://www.opensource.org/licenses/mit-license.html MIT License
@@ -60,22 +60,24 @@
                 $select
                     .addClass('hasCustomSelect')
                     .on('update', function () {
+						changed(this);
+						
                         var selectBoxWidth = parseInt($select.outerWidth(), 10) -
                                 (parseInt(customSelectSpan.outerWidth(), 10) -
-                                    parseInt(customSelectSpan.width(), 10)),
-                            selectBoxHeight = customSelectSpan.outerHeight();
-
-                        changed(this);
+                                    parseInt(customSelectSpan.width(), 10));
+						
+						// Set to inline-block before calculating outerHeight
+						customSelectSpan.css({
+                            display: 'inline-block'
+                        });
+						
+                        var selectBoxHeight = customSelectSpan.outerHeight();
 
                         if ($select.attr('disabled')) {
                             customSelectSpan.addClass('customSelectDisabled');
                         } else {
                             customSelectSpan.removeClass('customSelectDisabled');
                         }
-
-                        customSelectSpan.css({
-                            display: 'inline-block'
-                        });
 
                         customSelectInnerSpan.css({
                             width:   selectBoxWidth,
