@@ -1,7 +1,7 @@
 /*!
- * jquery.customSelect() - v0.3.2
+ * jquery.customSelect() - v0.3.3
  * http://adam.co/lab/jquery/customselect/
- * 2013-02-28
+ * 2013-03-04
  *
  * Copyright 2013 Adam Coulombe
  * @license http://www.opensource.org/licenses/mit-license.html MIT License
@@ -18,12 +18,10 @@
                     mapClass:    true,
                     mapStyle:    true
                 },
-                changed = function (el) {
-                    var $select = $(el),
-                        currentSelected = $select.find(':selected'),
-                        customSelectSpan = $select.next(),
-                        customSelectSpanInner = customSelectSpan.children(':first'),
-                        html = currentSelected.html() || '&nbsp;';
+                changed = function ($select,customSelectSpan) {
+                    var currentSelected = $select.find(':selected'),
+                    customSelectSpanInner = customSelectSpan.children(':first'),
+                    html = currentSelected.html() || '&nbsp;';
 
                     customSelectSpanInner.html(html);
 
@@ -60,7 +58,7 @@
                 $select
                     .addClass('hasCustomSelect')
                     .on('update', function () {
-						changed(this);
+						changed($select,customSelectSpan);
 						
                         var selectBoxWidth = parseInt($select.outerWidth(), 10) -
                                 (parseInt(customSelectSpan.outerWidth(), 10) -
@@ -96,7 +94,7 @@
                     .on('change', function () {
                         customSelectSpan.addClass('customSelectChanged');
 
-                        changed(this);
+                        changed($select,customSelectSpan);
                     })
                     .on('keyup', function () {
                         $select.blur();
