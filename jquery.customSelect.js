@@ -1,7 +1,7 @@
 /*!
- * jquery.customSelect() - v0.3.3
+ * jquery.customSelect() - v0.3.4
  * http://adam.co/lab/jquery/customselect/
- * 2013-03-04
+ * 2013-04-15
  *
  * Copyright 2013 Adam Coulombe
  * @license http://www.opensource.org/licenses/mit-license.html MIT License
@@ -100,8 +100,13 @@
                         $select.blur();
                         $select.focus();
                     })
-                    .on('mousedown', function () {
-                        customSelectSpan.removeClass('customSelectChanged').addClass('customSelectOpen');
+                    .on('mouseup', function () {
+                        customSelectSpan.removeClass('customSelectChanged');
+                        if(customSelectSpan.hasClass('customSelectOpen')){
+                            customSelectSpan.removeClass('customSelectOpen');
+                        }else{
+                            customSelectSpan.addClass('customSelectOpen');
+                        }
                     })
                     .focus(function () {
                         customSelectSpan.removeClass('customSelectChanged').addClass('customSelectFocus');
