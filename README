@@ -1,5 +1,8 @@
 Custom Select Box CSS Style Plugin: jQuery + CSS
 
+Version 0.3.6 (16/04/2013)
+ * Calls change function instead of invoking change event to fix double-fire
+
 Version 0.3.5 (16/04/2013)
  * Much improved logic for `customSelectOpen`
  * Bug fix for Firefox keyboard selection

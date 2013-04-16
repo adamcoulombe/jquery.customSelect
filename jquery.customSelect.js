@@ -111,7 +111,7 @@
                                 if( e.target != $select.get(0) && $.inArray(e.target,$select.find('*').get()) < 0 ){
                                     $select.blur();
                                 }else{
-                                    $select.change();
+                                    changed($select,customSelectSpan);
                                 }
                             });
                         }
