@@ -16,8 +16,7 @@
             var defaults = {
                     customClass: null,
                     mapClass:    true,
-                    mapStyle:    true,
-                    prefix: customSelect
+                    mapStyle:    true
                 },
                 changed = function ($select,customSelectSpan) {
                     var currentSelected = $select.find(':selected'),
