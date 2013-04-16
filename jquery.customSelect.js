@@ -1,7 +1,7 @@
 /*!
- * jquery.customSelect() - v0.3.4
+ * jquery.customSelect() - v0.3.5
  * http://adam.co/lab/jquery/customselect/
- * 2013-04-15
+ * 2013-04-16
  *
  * Copyright 2013 Adam Coulombe
  * @license http://www.opensource.org/licenses/mit-license.html MIT License
@@ -16,7 +16,8 @@
             var defaults = {
                     customClass: null,
                     mapClass:    true,
-                    mapStyle:    true
+                    mapStyle:    true,
+                    prefix: customSelect
                 },
                 changed = function ($select,customSelectSpan) {
                     var currentSelected = $select.find(':selected'),
@@ -27,6 +28,7 @@
 
                     setTimeout(function () {
                         customSelectSpan.removeClass('customSelectOpen');
+                        $(document).off('mouseup.customSelectOpen');
                     }, 60);
                 };
 
@@ -93,19 +95,26 @@
                     })
                     .on('change', function () {
                         customSelectSpan.addClass('customSelectChanged');
-
                         changed($select,customSelectSpan);
                     })
                     .on('keyup', function () {
-                        $select.blur();
-                        $select.focus();
+                        if(!customSelectSpan.hasClass('customSelectOpen')){
+                            $select.blur();
+                            $select.focus();
+                        }
                     })
-                    .on('mouseup', function () {
+                    .on('mouseup', function (e) {
                         customSelectSpan.removeClass('customSelectChanged');
-                        if(customSelectSpan.hasClass('customSelectOpen')){
-                            customSelectSpan.removeClass('customSelectOpen');
-                        }else{
+                        if(!customSelectSpan.hasClass('customSelectOpen')){
                             customSelectSpan.addClass('customSelectOpen');
+                            e.stopPropagation();
+                            $(document).one('mouseup.customSelectOpen', function (e) {
+                                if( e.target != $select.get(0) && $.inArray(e.target,$select.find('*').get()) < 0 ){
+                                    $select.blur();
+                                }else{
+                                    $select.change();
+                                }
+                            });
                         }
                     })
                     .focus(function () {
