@@ -28,6 +28,8 @@
                     setTimeout(function () {
                         customSelectSpan.removeClass('customSelectOpen');
                         $(document).off('mouseup.customSelectOpen');
+                        if (currentSelected.attr('disabled')) { customSelectSpan.addClass('customSelectPlaceholder'); }
+                        else { customSelectSpan.removeClass('customSelectPlaceholder'); }                        
                     }, 60);
                 };
 
