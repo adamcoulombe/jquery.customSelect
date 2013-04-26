@@ -24,12 +24,16 @@
                     html = currentSelected.html() || '&nbsp;';
 
                     customSelectSpanInner.html(html);
-
+                    
+                    if (currentSelected.attr('disabled')) {
+                    	customSelectSpan.addClass('customSelectDisabledOption');
+                    } else {
+                    	customSelectSpan.removeClass('customSelectDisabledOption');
+                    }
+                    
                     setTimeout(function () {
                         customSelectSpan.removeClass('customSelectOpen');
-                        $(document).off('mouseup.customSelectOpen');
-                        if (currentSelected.attr('disabled')) { customSelectSpan.addClass('customSelectDisabledOption'); }
-                        else { customSelectSpan.removeClass('customSelectDisabledOption'); }                        
+                        $(document).off('mouseup.customSelectOpen');                  
                     }, 60);
                 };
 
