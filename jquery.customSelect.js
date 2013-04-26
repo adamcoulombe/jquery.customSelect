@@ -1,7 +1,7 @@
 /*!
- * jquery.customSelect() - v0.3.5
+ * jquery.customSelect() - v0.3.7
  * http://adam.co/lab/jquery/customselect/
- * 2013-04-16
+ * 2013-04-26
  *
  * Copyright 2013 Adam Coulombe
  * @license http://www.opensource.org/licenses/mit-license.html MIT License

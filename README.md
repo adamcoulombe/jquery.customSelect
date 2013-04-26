@@ -1,4 +1,74 @@
-Custom Select Box CSS Style Plugin: jQuery + CSS
+# Custom Select Box CSS Style Plugin: jQuery + CSS
+
+## Getting started
+
+### Initiate the plugin
+```javascript
+$(document).ready(function(){
+	$('#someSelectBox').customSelect();
+});
+```
+### Style using CSS however you like
+```CSS
+.customSelect { 
+/* This is the default class that is used */
+/* Put whatever custom styles you want here */
+}
+
+.customSelect.customSelectHover {
+/* Styles for when the select box is hovered */
+}
+
+.customSelect.customSelectOpen {
+/* Styles for when the select box is open */
+}
+
+.customSelect.customSelectFocus {
+/* Styles for when the select box is in focus */
+}
+
+.customSelect.customSelectDisabledOption {
+/* Styles for when the selected item is a disabled one */
+}
+
+.customSelect.customSelectDisabled {
+/* Styles for when the select box itself is disabled */
+}
+
+.customSelectInner {
+/* You can style the inner box too */
+}
+```
+
+## Cookbook
+### Trigger an update on the select box
+Useful if any modifications are made to the select box after customSelect() has been applied
+```javascript
+$('#someSelectBox').customSelect();
+
+// as an example....
+$('#someSelectBox').width(500).append('<option>New!</option>');
+
+// Trigger an refresh on the select box. Good as new!
+$('#someSelectBox').trigger('update');
+
+
+```
+
+## Options
+There are a few extra options if you need them
+```javascript
+$('#someSelectBox').customSelect({
+    customClass: "sexySelect", // Specify a different class name (defaults to null)
+    mapClass:    true, // Copy any existing classes from the given select element (defaults to true)
+    mapStyle:    true // Copy the value of the style attribute from the given select element (defaults to true)
+});
+```
+
+
+## Changelog
+Version 0.3.7 (26/04/2013)
+ * Support for `disabled` `<option>` via `customSelectDisabledOption` class
 
 Version 0.3.6 (16/04/2013)
  * Calls change function instead of invoking change event to fix double-fire
@@ -15,7 +85,7 @@ Version 0.3.3 (04/03/2013)
 
 Version 0.3.2 (28/02/2013)
  * Patch for incorrect select height caused by 0.3.0
- * Support for `disabled` select boxes via customSelectDisabled class
+ * Support for `disabled` select boxes via `customSelectDisabled` class
  
 Version 0.3.0 (12/02/2013)
  * Refactored coding style
