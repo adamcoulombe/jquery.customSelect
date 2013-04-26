@@ -51,8 +51,16 @@ $('#someSelectBox').width(500).append('<option>New!</option>');
 
 // Trigger an refresh on the select box. Good as new!
 $('#someSelectBox').trigger('update');
+```
 
-
+### Making customSelect responsive
+In a responsive layout, you may need to change the size / style of the select box.
+The best way to do this is with `matchMedia`. Consider using a [matchMedia polyfill](https://github.com/paulirish/matchMedia.js) for better browser support. The `addListener` extension makes it very easy to update the customSelect:
+```javascript
+// add a media query listener and trigger a customSelect update whenever the query gets matched or unmatched
+matchMedia('only screen and (max-width: 480px)').addListener(function(list){
+    $('#mySelectBox').trigger('update');
+});
 ```
 
 ## Options
