@@ -1,7 +1,7 @@
 /*!
- * jquery.customSelect() - v0.3.7
+ * jquery.customSelect() - v0.4.0
  * http://adam.co/lab/jquery/customselect/
- * 2013-04-26
+ * 2013-04-28
  *
  * Copyright 2013 Adam Coulombe
  * @license http://www.opensource.org/licenses/mit-license.html MIT License
@@ -13,48 +13,48 @@
 
     $.fn.extend({
         customSelect: function (options) {
-            var defaults = {
-                    customClass: null,
-                    mapClass:    true,
-                    mapStyle:    true
-                },
-                changed = function ($select,customSelectSpan) {
-                    var currentSelected = $select.find(':selected'),
-                    customSelectSpanInner = customSelectSpan.children(':first'),
-                    html = currentSelected.html() || '&nbsp;';
-
-                    customSelectSpanInner.html(html);
-                    
-                    if (currentSelected.attr('disabled')) {
-                    	customSelectSpan.addClass('customSelectDisabledOption');
-                    } else {
-                    	customSelectSpan.removeClass('customSelectDisabledOption');
-                    }
-                    
-                    setTimeout(function () {
-                        customSelectSpan.removeClass('customSelectOpen');
-                        $(document).off('mouseup.customSelectOpen');                  
-                    }, 60);
-                };
-
+            // filter out <= IE6
             if (typeof document.body.style.maxHeight === 'undefined') {
-                /* filter out <= IE6 */
                 return this;
             }
+            var defaults = {
+                    customClass: 'customSelect',
+                    mapClass:    true,
+                    mapStyle:    true
+            },
+            options = $.extend(defaults, options),
+            prefix = options.customClass,
+            changed = function ($select,customSelectSpan) {
+                var currentSelected = $select.find(':selected'),
+                customSelectSpanInner = customSelectSpan.children(':first'),
+                html = currentSelected.html() || '&nbsp;';
 
-            options = $.extend(defaults, options);
+                customSelectSpanInner.html(html);
+                
+                if (currentSelected.attr('disabled')) {
+                	customSelectSpan.addClass(getClass('DisabledOption'));
+                } else {
+                	customSelectSpan.removeClass(getClass('DisabledOption'));
+                }
+                
+                setTimeout(function () {
+                    customSelectSpan.removeClass(getClass('Open'));
+                    $(document).off('mouseup.'+getClass('Open'));                  
+                }, 60);
+            },
+            getClass = function(suffix){
+                return prefix + suffix;
+            };
 
             return this.each(function () {
                 var $select = $(this),
-                    customSelectInnerSpan = $('<span class="customSelectInner" />'),
-                    customSelectSpan = $('<span class="customSelect" />');
+                    customSelectInnerSpan = $('<span />').addClass(getClass('Inner')),
+                    customSelectSpan = $('<span />');
 
-                customSelectSpan.append(customSelectInnerSpan);
-                $select.after(customSelectSpan);
+                $select.after(customSelectSpan.append(customSelectInnerSpan));
+                
+                customSelectSpan.addClass(prefix);
 
-                if (options.customClass) {
-                    customSelectSpan.addClass(options.customClass);
-                }
                 if (options.mapClass) {
                     customSelectSpan.addClass($select.attr('class'));
                 }
@@ -79,9 +79,9 @@
                         var selectBoxHeight = customSelectSpan.outerHeight();
 
                         if ($select.attr('disabled')) {
-                            customSelectSpan.addClass('customSelectDisabled');
+                            customSelectSpan.addClass(getClass('Disabled'));
                         } else {
-                            customSelectSpan.removeClass('customSelectDisabled');
+                            customSelectSpan.removeClass(getClass('Disabled'));
                         }
 
                         customSelectInnerSpan.css({
@@ -99,21 +99,21 @@
                         });
                     })
                     .on('change', function () {
-                        customSelectSpan.addClass('customSelectChanged');
+                        customSelectSpan.addClass(getClass('Changed'));
                         changed($select,customSelectSpan);
                     })
                     .on('keyup', function () {
-                        if(!customSelectSpan.hasClass('customSelectOpen')){
+                        if(!customSelectSpan.hasClass(getClass('Open'))){
                             $select.blur();
                             $select.focus();
                         }
                     })
                     .on('mouseup', function (e) {
-                        customSelectSpan.removeClass('customSelectChanged');
-                        if(!customSelectSpan.hasClass('customSelectOpen')){
-                            customSelectSpan.addClass('customSelectOpen');
+                        customSelectSpan.removeClass(getClass('Changed'));
+                        if(!customSelectSpan.hasClass(getClass('Open'))){
+                            customSelectSpan.addClass(getClass('Open'));
                             e.stopPropagation();
-                            $(document).one('mouseup.customSelectOpen', function (e) {
+                            $(document).one('mouseup.'+getClass('Open'), function (e) {
                                 if( e.target != $select.get(0) && $.inArray(e.target,$select.find('*').get()) < 0 ){
                                     $select.blur();
                                 }else{
@@ -123,15 +123,15 @@
                         }
                     })
                     .focus(function () {
-                        customSelectSpan.removeClass('customSelectChanged').addClass('customSelectFocus');
+                        customSelectSpan.removeClass(getClass('Changed')).addClass(getClass('Focus'));
                     })
                     .blur(function () {
-                        customSelectSpan.removeClass('customSelectFocus customSelectOpen');
+                        customSelectSpan.removeClass(getClass('Focus')+' '+getClass('Open'));
                     })
                     .hover(function () {
-                        customSelectSpan.addClass('customSelectHover');
+                        customSelectSpan.addClass(getClass('Hover'));
                     }, function () {
-                        customSelectSpan.removeClass('customSelectHover');
+                        customSelectSpan.removeClass(getClass('Hover'));
                     })
                     .trigger('update');
             });

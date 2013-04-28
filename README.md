@@ -75,6 +75,13 @@ $('#someSelectBox').customSelect({
 
 
 ## Changelog
+
+Version 0.4.0 (26/04/2013)
+ * Some optimizations for better compression/minification
+ * If you specify a `customClass`, that classname will be used for all states.
+ * eg. `{customClass:'mySexySelect'}` will produce class names like `mySexySelectOpen`, `mySexySelectFocus`, `mySexySelectHover`
+ * The only exception is the `hasCustomSelect` class, which will maintain the plugin's default namespace since it is applied to the select box to distinguish it from an unstyled select.
+
 Version 0.3.7 (26/04/2013)
  * Support for `disabled` `<option>` via `customSelectDisabledOption` class
 
