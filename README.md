@@ -40,7 +40,8 @@ $(document).ready(function(){
 }
 ```
 
-### [Example using the different classes](http://jsfiddle.net/adamco/7ttWj/)
+## More Examples
+ * [Example making use of the different states/classes](http://jsfiddle.net/adamco/7ttWj/)
 
 ## Cookbook
 ### Trigger an update on the select box
