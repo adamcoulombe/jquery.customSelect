@@ -108,8 +108,10 @@
                             $select.focus();
                         }
                     })
-                    .on('mouseup', function (e) {
+                    .on('mousedown', function (e) {
                         customSelectSpan.removeClass(getClass('Changed'));
+                    })
+                    .on('mouseup', function (e) {
                         if(!customSelectSpan.hasClass(getClass('Open'))){
                             customSelectSpan.addClass(getClass('Open'));
                             e.stopPropagation();
