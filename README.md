@@ -67,7 +67,7 @@ matchMedia('only screen and (max-width: 480px)').addListener(function(list){
 There are a few extra options if you need them
 ```javascript
 $('#someSelectBox').customSelect({
-    customClass: "sexySelect", // Specify a different class name (default is 'customSelect')
+    customClass: "mySexySelect", // Specify a different class name (default is 'customSelect')
     mapClass:    true, // Copy any existing classes from the given select element (defaults to true)
     mapStyle:    true // Copy the value of the style attribute from the given select element (defaults to true)
 });
