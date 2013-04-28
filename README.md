@@ -1,7 +1,7 @@
 # Custom Select Box CSS Style Plugin: jQuery + CSS
 
 ## Getting started
-
+### [See Basic Demo](http://jsfiddle.net/adamco/hysHB/)
 ### Initiate the plugin
 ```javascript
 $(document).ready(function(){
@@ -39,6 +39,8 @@ $(document).ready(function(){
 /* You can style the inner box too */
 }
 ```
+
+### [Example using the different classes](http://jsfiddle.net/adamco/7ttWj/)
 
 ## Cookbook
 ### Trigger an update on the select box
