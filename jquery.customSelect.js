@@ -1,7 +1,7 @@
 /*!
- * jquery.customSelect() - v0.4.0
+ * jquery.customSelect() - v0.4.1
  * http://adam.co/lab/jquery/customselect/
- * 2013-04-28
+ * 2013-05-13
  *
  * Copyright 2013 Adam Coulombe
  * @license http://www.opensource.org/licenses/mit-license.html MIT License
@@ -102,26 +102,36 @@
                         customSelectSpan.addClass(getClass('Changed'));
                         changed($select,customSelectSpan);
                     })
-                    .on('keyup', function () {
+                    .on('keyup', function (e) {
                         if(!customSelectSpan.hasClass(getClass('Open'))){
                             $select.blur();
                             $select.focus();
+                        }else{
+                            if(e.which==13||e.which==27){
+                                changed($select,customSelectSpan);
+                            }
                         }
                     })
                     .on('mousedown', function (e) {
                         customSelectSpan.removeClass(getClass('Changed'));
                     })
                     .on('mouseup', function (e) {
-                        if(!customSelectSpan.hasClass(getClass('Open'))){
-                            customSelectSpan.addClass(getClass('Open'));
-                            e.stopPropagation();
-                            $(document).one('mouseup.'+getClass('Open'), function (e) {
-                                if( e.target != $select.get(0) && $.inArray(e.target,$select.find('*').get()) < 0 ){
-                                    $select.blur();
-                                }else{
-                                    changed($select,customSelectSpan);
-                                }
-                            });
+                        
+                        if( !customSelectSpan.hasClass(getClass('Open'))){
+                            // if FF and there are other selects open, just apply focus
+                            if($('.'+getClass('Open')).not(customSelectSpan).length>0 && typeof InstallTrigger !== 'undefined'){
+                                $select.focus();
+                            }else{
+                                customSelectSpan.addClass(getClass('Open'));
+                                e.stopPropagation();
+                                $(document).one('mouseup.'+getClass('Open'), function (e) {
+                                    if( e.target != $select.get(0) && $.inArray(e.target,$select.find('*').get()) < 0 ){
+                                        $select.blur();
+                                    }else{
+                                        changed($select,customSelectSpan);
+                                    }
+                                });
+                            }
                         }
                     })
                     .focus(function () {

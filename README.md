@@ -78,6 +78,9 @@ $('#someSelectBox').customSelect({
 
 
 ## Changelog
+Version 0.4.1 (26/05/2013)
+ * Fixed multiple `customSelectOpen` handling in FF
+ * `Esc` & `Enter` key support
 
 Version 0.4.0 (26/04/2013)
  * Some optimizations for better compression/minification
