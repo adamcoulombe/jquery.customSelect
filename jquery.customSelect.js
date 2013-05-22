@@ -1,7 +1,7 @@
 /*!
- * jquery.customSelect() - v0.4.1
+ * jquery.customSelect() - v0.4.2
  * http://adam.co/lab/jquery/customselect/
- * 2013-05-13
+ * 2013-05-22
  *
  * Copyright 2013 Adam Coulombe
  * @license http://www.opensource.org/licenses/mit-license.html MIT License
@@ -110,7 +110,7 @@
                             $select.blur();
                             $select.focus();
                         }else{
-                            if(e.which==13||e.which==27){
+                            if(e.which==13||e.which==27||e.which==9){
                                 changed($select,customSelectSpan);
                             }
                         }
