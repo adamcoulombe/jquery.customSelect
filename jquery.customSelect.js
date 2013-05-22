@@ -49,7 +49,8 @@
             return this.each(function () {
                 var $select = $(this),
                     customSelectInnerSpan = $('<span />').addClass(getClass('Inner')),
-                    customSelectSpan = $('<span />');
+                    customSelectSpan = $('<span />'),
+                    position = $select.position();
 
                 $select.after(customSelectSpan.append(customSelectInnerSpan));
                 
@@ -95,7 +96,9 @@
                             position:             'absolute',
                             opacity:              0,
                             height:               selectBoxHeight,
-                            fontSize:             customSelectSpan.css('font-size')
+                            fontSize:             customSelectSpan.css('font-size'),
+                            left:                 position.left,
+                            top:                  position.top
                         });
                     })
                     .on('change', function () {
