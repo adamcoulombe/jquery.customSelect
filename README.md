@@ -78,11 +78,7 @@ $('#someSelectBox').customSelect({
 
 
 ## Changelog
-Version 0.4.2 (22/05/2013)
- * Remember `position` of select element (fix issue #38 (https://github.com/adamcoulombe/jquery.customSelect/pull/38) by @Jako)
- * `tab` key support
-
-Version 0.4.1 (13/05/2013)
+Version 0.4.1 (26/05/2013)
  * Fixed multiple `customSelectOpen` handling in FF
  * `Esc` & `Enter` key support
 

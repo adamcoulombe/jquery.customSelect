@@ -1,7 +1,7 @@
 /*!
- * jquery.customSelect() - v0.4.2
+ * jquery.customSelect() - v0.4.1
  * http://adam.co/lab/jquery/customselect/
- * 2013-05-22
+ * 2013-05-13
  *
  * Copyright 2013 Adam Coulombe
  * @license http://www.opensource.org/licenses/mit-license.html MIT License
@@ -49,8 +49,7 @@
             return this.each(function () {
                 var $select = $(this),
                     customSelectInnerSpan = $('<span />').addClass(getClass('Inner')),
-                    customSelectSpan = $('<span />'),
-                    position = $select.position();
+                    customSelectSpan = $('<span />');
 
                 $select.after(customSelectSpan.append(customSelectInnerSpan));
                 
@@ -96,9 +95,7 @@
                             position:             'absolute',
                             opacity:              0,
                             height:               selectBoxHeight,
-                            fontSize:             customSelectSpan.css('font-size'),
-                            left:                 position.left,
-                            top:                  position.top
+                            fontSize:             customSelectSpan.css('font-size')
                         });
                     })
                     .on('change', function () {
@@ -110,7 +107,7 @@
                             $select.blur();
                             $select.focus();
                         }else{
-                            if(e.which==13||e.which==27||e.which==9){
+                            if(e.which==13||e.which==27){
                                 changed($select,customSelectSpan);
                             }
                         }
