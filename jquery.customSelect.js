@@ -1,5 +1,5 @@
 /*!
- * jquery.customSelect() - v0.5.0
+ * jquery.customSelect() - v0.5.1
  * http://adam.co/lab/jquery/customselect/
  * 2014-03-19
  *
@@ -66,7 +66,7 @@
                     .addClass('hasCustomSelect')
                     .on('render.customSelect', function () {
                         changed($select,customSelectSpan);
-			$select.css('width','');			
+                        $select.css('width','');			
                         var selectBoxWidth = parseInt($select.outerWidth(), 10) -
                                 (parseInt(customSelectSpan.outerWidth(), 10) -
                                     parseInt(customSelectSpan.width(), 10));

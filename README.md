@@ -78,6 +78,8 @@ $('#someSelectBox').customSelect({
 
 
 ## Changelog
+Version 0.5.1 (19/03/2013)
+ * Merge fix for #60 by gu3st (Fixes issue when select box moves from display:none; to display:block;)
 
 Version 0.5.0 (19/03/2013)
  * Namespaced events
