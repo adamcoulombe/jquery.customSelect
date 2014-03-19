@@ -53,7 +53,7 @@ $('#someSelectBox').customSelect();
 $('#someSelectBox').width(500).append('<option>New!</option>');
 
 // Trigger an refresh on the select box. Good as new!
-$('#someSelectBox').trigger('update');
+$('#someSelectBox').trigger('render');
 ```
 
 ### Making customSelect responsive
@@ -62,7 +62,7 @@ The best way to do this is with `matchMedia`. Consider using a [matchMedia polyf
 ```javascript
 // add a media query listener and trigger a customSelect update whenever the query gets matched or unmatched
 matchMedia('only screen and (max-width: 480px)').addListener(function(list){
-    $('#mySelectBox').trigger('update');
+    $('#mySelectBox').trigger('render');
 });
 ```
 
@@ -78,6 +78,11 @@ $('#someSelectBox').customSelect({
 
 
 ## Changelog
+
+Version 0.5.0 (19/03/2013)
+ * Namespaced events
+ * API Change: 'update' event changed to 'render' to fix some compatibility issues
+
 Version 0.4.1 (26/05/2013)
  * Fixed multiple `customSelectOpen` handling in FF
  * `Esc` & `Enter` key support

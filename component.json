@@ -1,6 +1,6 @@
 {
     "name":         "jquery.customSelect",
-    "version":      "0.4.1",
+    "version":      "0.5.0",
     "main":         ["./jquery.customSelect.js", "./jquery.customSelect.min.js"],
     "dependencies": {
         "jquery": ">=1.7.2"
